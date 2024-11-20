@@ -7,3 +7,5 @@ flask_login
 pandas
 matplotlib
 passlib
+google-generativeai 
+python-dotenv

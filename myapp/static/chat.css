@@ -6,7 +6,7 @@
     }
 
 .container {
-  max-width: 1170px;
+  max-width: 1200px;
   margin: auto;
 }
 
@@ -20,6 +20,7 @@ img {
   overflow: hidden;
   width: 40%;
   border-right: 1px solid #c4c4c4;
+
 }
 
 .inbox_msg {
@@ -161,7 +162,7 @@ img {
 }
 
 .inbox_chat {
-  height: 550px;
+  height: 580px;
   overflow-y: scroll;
 }
 
@@ -207,6 +208,7 @@ img {
   padding: 30px 15px 0 25px;
   width: 60%;
   background-image: url('images/background.svg');
+  /* overflow-y: auto;  */
 }
 
 .sent_msg p {
@@ -236,11 +238,13 @@ img {
   font-size: 15px;
   min-height: 48px;
   width: 100%;
+  /* margin-top: 50px; */
 }
 
 .type_msg {
   border-top: 1px solid #c4c4c4;
   position: relative;
+  padding-bottom: 1px;
 }
 
 .msg_send_btn {
@@ -255,13 +259,77 @@ img {
   right: 0;
   top: 11px;
   width: 33px;
+  /* margin-top: 50px; */
 }
 
 .messaging {
   padding: 0 0 50px 0;
 }
 
+.message {
+  margin-bottom: 1px;
+}
+
 .msg_history {
-  height: 516px;
+  height: 100px; /* Reduced height to make room for the translator */
   overflow-y: auto;
+}
+.translator-section {
+  background-color: #f8f8f8;
+  padding: 10px;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  margin-top: 20px;
+  font-size: 12px;
+  /* overflow-y: auto; */
+}
+
+.translator-section h4 {
+  font-size: 12px;
+  color: #05728f;
+}
+
+.translator-section textarea {
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  border: 1px solid #cdcdcd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.translator-section select,
+.translator-section input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #cdcdcd;
+  border-radius: 5px;
+}
+
+.translator-section button {
+  background-color: #05728f;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.translator-section button:hover {
+  background-color: #04637a;
+}
+
+.translator-section h5 {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #464646;
+}
+
+.translator-section p#translated_text {
+  background-color: #ebebeb;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #c4c4c4;
 }

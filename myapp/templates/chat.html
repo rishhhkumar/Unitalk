@@ -15,7 +15,7 @@
   <div class="container">
     <div class="container-header">
       <h3 class=" text-left"> {{ user_data["username"] }}</h3>
-      <h3 class=" text-center">iChat</h3>
+      <h3 class=" text-center">Unichat</h3>
       <h3 class=" text-right">{{ user_data["email"] }}</h3>
     </div>
     <div class="messaging">
@@ -83,6 +83,29 @@
               {% endif %}
             {% endfor %}
           </div>
+          <div class="translator-section">
+            <h4>Real-time Translator</h4>
+            <form id="translate_form">
+              <textarea id="translate_text" class="form-control" placeholder="Enter text to translate"></textarea>
+              
+              <label for="tone">Select Tone:</label>
+              <select id="tone" class="form-control">
+                <option value="Formal">Formal</option>
+                <option value="Casual">Casual</option>
+                <option value="Happy">Happy</option>
+                <option value="Sad">Sad</option>
+                <option value="Neutral">Neutral</option>
+              </select>
+        
+              <label for="target_language">Target Language:</label>
+              <input type="text" id="target_language" class="form-control" placeholder="Enter target language (e.g., Spanish)" />
+        
+              <button type="button" id="translate_button" class="btn btn-primary mt-2">Translate</button>
+            </form>
+        
+            <h5>Translated Text:</h5>
+            <p id="translated_text"></p>
+          </div>
           <div class="type_msg">
             <div class="input_msg_write">
               <form id="chat_form">
@@ -96,10 +119,6 @@
           </div>
         </div>
       </div>
-
-      <p class="text-center top_spac"> Design by
-        <a target="_blank" href="https://www.linkedin.com/in/sunil-rajput-nattho-singh/">Sunil Rajput</a>
-      </p>
     </div>
   </div>
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -210,6 +229,33 @@
       // Return the time format string.
       return timeFormat;
     }
+    document.getElementById('translate_button').addEventListener('click', function() {
+      const inputText = document.getElementById('translate_text').value;
+      const tone = document.getElementById('tone').value;
+      const targetLanguage = document.getElementById('target_language').value;
+
+      if (inputText && targetLanguage) {
+        // Send translation request via AJAX
+        $.ajax({
+          url: "{{ url_for('views.translate') }}",
+          method: "POST",
+          contentType: "application/json",
+          data: JSON.stringify({
+            text: inputText,
+            tone: tone,
+            target_language: targetLanguage
+          }),
+          success: function(response) {
+            document.getElementById('translated_text').textContent = response.translated_text;
+          },
+          error: function() {
+            alert("Error in translation. Please try again.");
+          }
+        });
+      } else {
+        alert("Please enter the text and target language.");
+      }
+    });
  </script>
 
   <script>
